@@ -59,32 +59,74 @@ import 'package:tp2_dart/tp2_dart.dart' as tp2_dart;
 
 // // Dart interdit null par défaut pour éviter les erreurs quand on utilise une variable.
 
+// void main() {
+//   print(carre(5));
+//   print(moyenne(12, 16));
+
+//   afficherFiche(nom: 'Ahmed');
+//   afficherFiche(nom: 'Sarra', classe: 'DSI3', moyenne: 15.5);
+// }
+
+// // TODO 1 : fonction fléchée qui renvoie le carré d'un entier
+// int carre(int n) => n * n;
+
+// // TODO 2 : renvoie la moyenne de deux notes (double)
+// double moyenne(double n1, double n2) {
+//   return (n1 + n2) / 2;
+// }
+
+// // TODO 3 : compléter la signature
+// // nom : nommé et obligatoire
+// // classe : nommé, valeur par défaut 'Non précisée'
+// // moyenne : nommé, peut être null
+// void afficherFiche({ required String nom, String classe = 'Non précisée', double? moyenne})
+//   // TODO 4 : afficher
+//   // Nom : Ahmed | Classe : Non précisée | Moyenne : non renseignée
+//   {
+//     print('Nom : $nom | Classe : $classe | Moyenne : ${moyenne ?? 'non renseignée'}');
+// }
+
+// // Flutter utilise les paramètres nommés car ils rendent le code plus clair et
+// // permettent de savoir a quoi correspond chaque valuer
+
 void main() {
-  print(carre(5));
-  print(moyenne(12, 16));
+  List<int> notes = [12, 8, 15, 17, 9];
 
-  afficherFiche(nom: 'Ahmed');
-  afficherFiche(nom: 'Sarra', classe: 'DSI3', moyenne: 15.5);
+  // TODO 1 : ajouter la note 11 à la liste
+  notes.add(11);
+
+  // TODO 2 : afficher le nombre de notes (propriété length)
+  print('${notes.length} notes');
+
+  // TODO 3 : afficher chaque note, une par ligne, avec une boucle for
+  for (var note in notes) {
+    print(note);
+  }
+
+  // TODO 4 : créer une liste des notes >= 10 avec where, puis l'afficher
+  // indice : notes.where((n) => ...).toList()
+  List<int> notesSup10 = notes.where((n) => n >= 10).toList();
+  print('Notes >= 10 : $notesSup10');
+
+  // TODO 5 : calculer et afficher la moyenne
+  // indice : une boucle et une variable somme
+  int somme = 0;
+  for (var note in notes) {
+    somme += note;
+  }
+  double moyenne = somme / notes.length;
+  print('Moyenne : ${moyenne.toStringAsFixed(2)}');
+
+  Map<String, int> ages = {'Ahmed': 22, 'Sarra': 21};
+
+  // TODO 6 : ajouter 'Youssef' avec l'âge 23
+  ages ['Youssef'] = 23;
+
+  // TODO 7 : parcourir la map et afficher 'Ahmed a 22 ans'
+  // indice : ages.forEach((cle, valeur) { ... });
+  ages.forEach((cle, valeur) {
+    print('$cle a $valeur ans');
+  });
 }
 
-// TODO 1 : fonction fléchée qui renvoie le carré d'un entier
-int carre(int n) => n * n;
-
-// TODO 2 : renvoie la moyenne de deux notes (double)
-double moyenne(double n1, double n2) {
-  return (n1 + n2) / 2;
-}
-
-// TODO 3 : compléter la signature
-// nom : nommé et obligatoire
-// classe : nommé, valeur par défaut 'Non précisée'
-// moyenne : nommé, peut être null
-void afficherFiche({ required String nom, String classe = 'Non précisée', double? moyenne})
-  // TODO 4 : afficher
-  // Nom : Ahmed | Classe : Non précisée | Moyenne : non renseignée
-  {
-    print('Nom : $nom | Classe : $classe | Moyenne : ${moyenne ?? 'non renseignée'}');
-}
-
-// Flutter utilise les paramètres nommés car ils rendent le code plus clair et
-// permettent de savoir a quoi correspond chaque valuer
+// Une List contient des valeurs dans un ordre,une Map contient des paires cle-valuer
